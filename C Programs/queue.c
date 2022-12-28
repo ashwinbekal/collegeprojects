@@ -38,7 +38,7 @@ void display(){
 }
 void dequeue(int x){
     if(front==-1&&rear==-1){
-        printf("Queue is empty\n");
+        printf("Queue is empty.\n");
     }
     else if(front==rear){
         printf("The element deleted is %d\n",queue[front]);
