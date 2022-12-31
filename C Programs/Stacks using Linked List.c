@@ -3,6 +3,7 @@
 void insert_front();
 void delete_front();
 void display();
+void display_deleted();
 struct node{
     int num;
     struct node *link;
@@ -32,6 +33,7 @@ void insert_front(){
         temp->link=first;
         first=temp;
     }
+    display();
 }
 void delete_front(){
     NODE temp;
@@ -39,14 +41,18 @@ void delete_front(){
         printf("List is empty\n");
     }
     else if(first->link==NULL){
+        display_deleted(first);
         free(first);
         first=NULL;
+        display();
     }
     else{
+        display_deleted(first);
         temp=first->link;
         free(first);
         first=temp;
         temp=NULL;
+        display();
     }
 }
 void display(){
@@ -55,6 +61,7 @@ void display(){
         printf("List is empty\n");
     }
     else{
+        printf("The elements of the Stack are:\t");
         cur=first;
         while(cur->link!=NULL){
             printf("%d\t",cur->num);
@@ -63,6 +70,10 @@ void display(){
         printf("%d\t",cur->num);
     }
     printf("\n");
+}
+void display_deleted(NODE temp){
+    printf("The element deleted is:\t");
+    printf("%d\n",temp->num);
 }
 void main(){
     int choice;
